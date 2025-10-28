@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: structure-prediction
     server: {{ $config.spec.destination.server | quote }}
-  project: default
+  project: structure-prediction
   source:
     path: {{ .path | default .name | quote }}
     repoURL: {{ $config.spec.source.repoURL }}
