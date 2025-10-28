@@ -4,12 +4,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ printf "example.%s" .name | quote }}
-  namespace: argocd
+  namespace: structure-prediction
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: {{ .namespace | default .name | quote }}
+    namespace: structure-prediction
     server: {{ $config.spec.destination.server | quote }}
   project: default
   source:
@@ -21,7 +21,7 @@ spec:
     {{- end }}
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=false
     automated:
       prune: true
       selfHeal: true
